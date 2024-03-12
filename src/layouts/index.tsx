@@ -1,3 +1,4 @@
+import './index.less';
 import { Link, Outlet } from 'umi';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
