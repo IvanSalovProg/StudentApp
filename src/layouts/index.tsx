@@ -1,12 +1,27 @@
 import './index.less';
-import { Link, Outlet } from 'umi';
+import { Link, Outlet, history } from 'umi';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { ItemType, MenuItemType } from 'antd/es/menu/hooks/useItems';
 
 export default function() {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  //const firstName = `Ваше имя ${person.firstName}`
+
+  const items: ItemType<MenuItemType>[] | undefined = [{
+    key: '',
+    label: "Home"
+},
+{
+  key: 'docs',
+    label: "Docs"
+}
+]
+
+
   
   return (
     <Layout>
@@ -16,8 +31,11 @@ export default function() {
         theme="dark"
         mode="horizontal"
         defaultSelectedKeys={['2']}
-        items={[]}
+        items={items}
         style={{ flex: 1, minWidth: 0 }}
+        onClick={({ item, key, keyPath, domEvent }) => {
+          history.push(`/${key}`)
+        }}
       />
     </Header>
     <Content style={{ padding: '0 48px' }}>
