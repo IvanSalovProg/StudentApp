@@ -1,23 +1,21 @@
+import React from "react";
 import { ChangeEventHandler, EventHandler } from "react";
 
 const DocsPage = () => {
-const func1 = () => {
-  return 'Hello World!'
+
+const [value, setValue] = React.useState<string>()
+
+const inputonChange = (event: any) => {
+console.log(event.target.value);
+setValue(event.target.value)
 }
-
-const param2 = "My property";
-
-const inputonChange = (event: any) => (
-console.log(event)
-)
 
 
 
   return (
     <div>
       <p><input onChange= {inputonChange}/></p>
-      <p>{func1()}</p>
-      <p>{param2}</p>
+      <p>{value == "1" ? <>Hello, World</> : <></>}</p>
     </div>
   );
 };
