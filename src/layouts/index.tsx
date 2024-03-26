@@ -1,5 +1,5 @@
 import './index.less';
-import { Link, Outlet, history } from 'umi';
+import { Link, Outlet, history } from '@umijs/max';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { ItemType, MenuItemType } from 'antd/es/menu/hooks/useItems';

@@ -2,16 +2,15 @@
   "private": true,
   "author": "IvanSalovProg <ivansalov94@gmail.com>",
   "scripts": {
-    "dev": "umi dev",
-    "build": "umi build",
-    "postinstall": "umi setup",
-    "setup": "umi setup",
+    "dev": "max dev",
+    "build": "max build",
+    "postinstall": "max setup",
+    "setup": "max setup",
     "start": "npm run dev"
   },
   "dependencies": {
     "@umijs/max": "^4.1.5",
-    "antd": "^5.15.2",
-    "umi": "^4.1.2"
+    "antd": "^5.15.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",
