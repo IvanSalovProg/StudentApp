@@ -6,7 +6,7 @@ const DocsPage = () => {
 
 const [value, setValue] = React.useState<string>()
 
-request('http://localhost:15301/Student/GetAll', {method: 'POST', data:{ }}).then(data => {
+request('/student/GetAll', {method: 'POST', data:{ }}).then(data => {
   console.log(data)
 })
 

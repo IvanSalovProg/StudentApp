@@ -7,5 +7,11 @@ export default defineConfig({
   ],
   npmClient: 'npm',
   request: {},
-  
+  proxy: {
+    '/student/': {
+target: 'http://127.0.0.1:15301',
+changeOrigin: true,
+pathRewrite: {'^':''},
+    }
+  },
 });
