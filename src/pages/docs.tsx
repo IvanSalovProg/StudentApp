@@ -27,16 +27,32 @@ setValue(event.target.value)
       <p>{value == "1" ? <>Hello, World</> : <></>}</p>
       <Table 
       columns={[{
-        title: 'Name',
-        dataIndex: 'name',
+        title: 'Id',
+        dataIndex: 'id',
       },
       {
-        title: 'Name',
-        dataIndex: 'name',
+        title: 'Группа',
+        dataIndex: 'groupId',
       },
       {
-        title: 'Name',
-        dataIndex: 'name',
+        title: 'Имя',
+        dataIndex: 'firstName',
+      },
+      {
+        title: 'Фамилия',
+        dataIndex: 'lastName',
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+      },
+      {
+        title: 'Дата создания',
+        dataIndex: 'createdAt',
+      },
+      {
+        title: 'Дата обновления',
+        dataIndex: 'updateAt',
       }]}
        dataSource={data?.students}/>
     </div>
