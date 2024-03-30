@@ -9,7 +9,7 @@ const [value, setValue] = React.useState<string>()
 const [data, setData] = React.useState<any>()
 
 React.useEffect(() => {
-  request('/student/GetAll', {method: 'POST', data:{ }}).then(data => {
+  request('/api/student/GetAll', {method: 'POST', data:{ }}).then(data => {
     setData(data)
   })
 }, []);
