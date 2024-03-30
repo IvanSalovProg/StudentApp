@@ -69,7 +69,5 @@ const columns =
 };
 
 export default DocsPage;
-function dayjs(arg0: string, arg1: string) {
-  throw new Error("Function not implemented.");
-}
+
 
