@@ -1,8 +1,9 @@
 import React from "react";
 import { ChangeEventHandler, EventHandler } from "react";
 import { request } from "@umijs/max";
-import { Space, Table } from "antd";
+import { Space, Table, message } from "antd";
 import dayjs from "dayjs";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 const DocsPage = () => {
 
@@ -29,8 +30,18 @@ const date_format = (value: string | null) =>{
     return date.format('MM-DD-YYYY');
 }
 
-const columns = 
-[{
+const deleteHandler = (id: number) => {
+console.log(id)
+request('/api/student', {method: 'DELETE', params:{id}}).then(data => {
+  message.success("Студент удален")
+
+  const newStudents = data?.students.filter((x: any) => x.id != id)
+const newData = { ...data, students: newStudents}
+  setData(newData)
+})
+}
+
+const columns = [{
   title: 'Id',
   dataIndex: 'id',
 },
@@ -64,10 +75,10 @@ const columns =
 {
   title: 'Действия',
   key: 'action',
-  render: () => <Space>
-    <a>Редактировать</a>
-    <a>Удалить</a>
-  </Space>
+  render: (row: any) => {return <Space>
+    <a><EditOutlined/></a>
+    <a onClick={() => deleteHandler(row.id)}><DeleteOutlined/></a>
+  </Space>}
 
 }]
 
