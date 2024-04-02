@@ -1,7 +1,7 @@
 import React from "react";
 import { ChangeEventHandler, EventHandler } from "react";
 import { request } from "@umijs/max";
-import { Table } from "antd";
+import { Space, Table } from "antd";
 import dayjs from "dayjs";
 
 const DocsPage = () => {
@@ -37,12 +37,7 @@ const columns =
 {
   title: 'Группа',
   dataIndex: 'groupId',
-  render:(value: number) => {
-    const group = data.groups.find((x: any) => x.id == value);
-    if(!group) return""
-
-    return group.name;
-  }
+  render:(value: number) => data.groups.find((x: any) => x.id == value)?.name
 },
 {
   title: 'Имя',
@@ -65,6 +60,15 @@ const columns =
   title: 'Дата обновления',
   dataIndex: 'updateAt',
   render: (value: any) => date_format(value)
+},
+{
+  title: 'Действия',
+  key: 'action',
+  render: () => <Space>
+    <a>Редактировать</a>
+    <a>Удалить</a>
+  </Space>
+
 }]
 
   return (
