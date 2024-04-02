@@ -37,6 +37,12 @@ const columns =
 {
   title: 'Группа',
   dataIndex: 'groupId',
+  render:(value: number) => {
+    const group = data.groups.find((x: any) => x.id == value);
+    if(!group) return""
+
+    return group.name;
+  }
 },
 {
   title: 'Имя',
