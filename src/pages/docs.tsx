@@ -20,6 +20,15 @@ console.log(event.target.value);
 setValue(event.target.value)
 }
 
+const date_format = (value: string | null) =>{
+  if(!value)return"";
+  const date = dayjs(value);
+
+    if(date.format('YYYY') == '1901' && date.format('DD')== '01' && date.format('MM')== '01') return"";
+
+    return date.format('MM-DD-YYYY');
+}
+
 const columns = 
 [{
   title: 'Id',
@@ -44,17 +53,12 @@ const columns =
 {
   title: 'Дата создания',
   dataIndex: 'createdAt',
-  render: (value: any) => {
-    const date = dayjs(value,'MM-DD-YYYY');
-    if(date.format('YYYY') == '1901' && date.format('DD')== '01' && date.format('MM')== '01') return"";
-
-    console.log(value)
-    return dayjs(value,'MM-DD-YYYY').format('MM-DD-YYYY');
-  }
+  render: (value: any) => date_format(value)
 },
 {
   title: 'Дата обновления',
   dataIndex: 'updateAt',
+  render: (value: any) => date_format(value)
 }]
 
   return (
