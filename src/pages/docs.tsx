@@ -97,19 +97,19 @@ const columns = [{
   return (
     <div>
       <Form layout="inline">
-      <Form.Item label="Группа">
+      <Form.Item label="Группа" style={{marginBottom: '12px'}}>
         <Select options = {[]} />
       </Form.Item>
-      <Form.Item label="Имя">
-        <Input placeholder="input placeholder" />
+      <Form.Item label="Имя" style={{marginBottom: '12px'}}>
+        <Input style={{width: '150px'}} />
       </Form.Item>
-      <Form.Item label="Фамилия">
-        <Input placeholder="input placeholder" />
+      <Form.Item label="Фамилия" style={{marginBottom: '12px'}}>
+        <Input style={{width: '150px'}} />
       </Form.Item>
-      <Form.Item label="E-mail">
-        <Input placeholder="input placeholder" />
+      <Form.Item label="E-mail" style={{marginBottom: '12px'}}>
+        <Input style={{width: '150px'}} />
       </Form.Item>
-      <Button htmlType ="submit">Найти</Button>
+      <Button type="primary" htmlType ="submit">Найти</Button>
       </Form>
       <p><input onChange= {inputonChange}/></p>
       <p>{value == "1" ? <>Hello, World</> : <></>}</p>
