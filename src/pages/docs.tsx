@@ -9,10 +9,18 @@ const DocsPage = () => {
 
 const [value, setValue] = React.useState<string>()
 const [data, setData] = React.useState<any>()
+const [groups, setGroups] = React.useState<any>()
 
 React.useEffect(() => {
   request('/api/student/GetAll', {method: 'POST', data:{ }}).then(data => {
     setData(data)
+  })
+
+  request('/api/group/GetAll', {method: 'POST', data:{ }}).then(data => {
+const groups = data.map(x =>({value: x.id, label: x.name})) 
+
+    setGroups(groups)
+    console.log(groups)
   })
 }, []);
 
@@ -38,6 +46,13 @@ request('/api/student', {method: 'DELETE', params:{id}}).then(() => {
   const newStudents = data?.students.filter((x: any) => x.id != id)
 const newData = { ...data, students: newStudents}
   setData(newData)
+})
+}
+
+const searchHandler = (data: any) => {
+request('/api/student/GetAll', {method: 'POST', data }).then(data => {
+  console.log(data);
+  setData(data)
 })
 }
 
@@ -96,23 +111,25 @@ const columns = [{
 
   return (
     <div>
-      <Form layout="inline">
-      <Form.Item label="Группа" style={{marginBottom: '12px'}}>
-        <Select options = {[]} />
+      <Form layout="inline" onFinish={searchHandler}>
+      <Form.Item name="groupId" label="Группа" style={{marginBottom: '12px'}}>
+        <Select  allowClear
+         options = {groups}
+         style={{width: '150px'}}
+         />
       </Form.Item>
-      <Form.Item label="Имя" style={{marginBottom: '12px'}}>
+      <Form.Item name="firstName" label="Имя" style={{marginBottom: '12px'}}>
         <Input style={{width: '150px'}} />
       </Form.Item>
-      <Form.Item label="Фамилия" style={{marginBottom: '12px'}}>
+      <Form.Item name="lastName" label="Фамилия" style={{marginBottom: '12px'}}>
         <Input style={{width: '150px'}} />
       </Form.Item>
-      <Form.Item label="E-mail" style={{marginBottom: '12px'}}>
+      <Form.Item name="email" label="E-mail" style={{marginBottom: '12px'}}>
         <Input style={{width: '150px'}} />
       </Form.Item>
       <Button type="primary" htmlType ="submit">Найти</Button>
       </Form>
-      <p><input onChange= {inputonChange}/></p>
-      <p>{value == "1" ? <>Hello, World</> : <></>}</p>
+      
       <Table 
       rowKey="id"
       columns={columns}
