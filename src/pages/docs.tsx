@@ -1,7 +1,7 @@
 import React from "react";
 import { ChangeEventHandler, EventHandler } from "react";
 import { request } from "@umijs/max";
-import { Popconfirm, Space, Table, message } from "antd";
+import { Form, Popconfirm, Space, Table, message } from "antd";
 import dayjs from "dayjs";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
@@ -79,12 +79,12 @@ const columns = [{
     <a><EditOutlined/></a>
     <a>
     <Popconfirm
-    title="Delete the task"
-    description="Are you sure to delete this task?"
+    title="Вы уверены?"
+    description="Подтвердите удаление студента"
     onConfirm={() => deleteHandler(row.id)}
     onCancel={() => {}}
-    okText="Yes"
-    cancelText="No"
+    okText="Да"
+    cancelText="Нет"
   >
     <DeleteOutlined/>
   </Popconfirm>
@@ -96,6 +96,10 @@ const columns = [{
 
   return (
     <div>
+      <Form
+      layout="inline">
+
+      </Form>
       <p><input onChange= {inputonChange}/></p>
       <p>{value == "1" ? <>Hello, World</> : <></>}</p>
       <Table 
