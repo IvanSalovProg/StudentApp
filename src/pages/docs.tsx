@@ -1,7 +1,7 @@
 import React from "react";
 import { ChangeEventHandler, EventHandler } from "react";
 import { request } from "@umijs/max";
-import { Form, Popconfirm, Space, Table, message } from "antd";
+import { Button, Form, Input, Popconfirm, Select, Space, Table, message } from "antd";
 import dayjs from "dayjs";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
@@ -96,9 +96,20 @@ const columns = [{
 
   return (
     <div>
-      <Form
-      layout="inline">
-
+      <Form layout="inline">
+      <Form.Item label="Группа">
+        <Select options = {[]} />
+      </Form.Item>
+      <Form.Item label="Имя">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
+      <Form.Item label="Фамилия">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
+      <Form.Item label="E-mail">
+        <Input placeholder="input placeholder" />
+      </Form.Item>
+      <Button htmlType ="submit">Найти</Button>
       </Form>
       <p><input onChange= {inputonChange}/></p>
       <p>{value == "1" ? <>Hello, World</> : <></>}</p>
